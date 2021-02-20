@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form-Generator</title>
+    <!--mi css-->
+    <link rel="stylesheet" href="./css/main.css">
+    <!--Booostrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css">
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+
+</head>
+
+<body>
+
+    <!-- As a heading -->
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <div class="container-fluid d-flex justify-content-center">
+            <h1>Form Generator</h1>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!--fila-->
+        <div class="row">
+            <!--seccion formulario-->
+            <section class="col-sm-8">
+                <div class="formulario" id="formulario">
+                    
+                </div>
+            </section>
+            <!--seccion formulario fin-->
+            <!--seccion menu-->
+            <section class="col-sm-4">
+                <div class="menu">
+                    <div>
+                        <button class="btn btn-primary" id="date"><i class="fas fa-calendar-week"></i> Date</button>
+                        <button class="btn btn-primary" id="number"><i class="fal fa-sort-numeric-up"></i> Number</button>
+                        <button class="btn btn-primary" id="text"><i class="fas fa-text-height"></i> Text</button>
+                        <button class="btn btn-primary" id="button">Boton</button>
+
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" id="file"><i class="fas fa-file-upload"></i> File</button>
+                        <button class="btn btn-primary" id="checkbox"><i class="fas fa-box-check"></i> checkbox</button>
+                        <button class="btn btn-primary" id="select" ><i class="fas fa-mouse-pointer"></i> select</button>
+                    </div>
+                </div>
+            </section>
+            <!--seccion menu fin-->
+
+        </div>
+        <!--fila fin-->
+    </div>
+
+    <!--js-->
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
