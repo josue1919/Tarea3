@@ -6,11 +6,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form-Generator</title>
     <!--mi css-->
-    <link rel="stylesheet" href="./css/main.css">
+    <!-- <link rel="stylesheet" href="./css/main.css"> -->
+    <style>
+        .formulario {
+            width: 100%;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: rgba(0, 0, 0, 0.1)0 0 10px;
+            padding: 30px;
+        }
+
+
+        .contenido {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 5px;
+        }
+
+        .menu {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            box-shadow: rgba(0, 0, 0, 0.1)0 0 10px;
+
+
+
+
+
+        }
+
+        .menu div {
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        .menu div button {
+
+            margin: 5px;
+            width: 120px;
+
+        }
+
+
+        @media (max-width: 991px) {
+
+            .menu div button {
+
+                margin: 5px;
+                width: 100px;
+                font-size: 11px;
+
+            }
+
+        }
+
+        @media (max-width: 777px) {
+
+            .menu {
+                display: flex;
+                flex-direction: column;
+            }
+
+        }
+
+        @media (max-width: 575px) {
+
+            .menu {
+                margin-top: 20px;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                box-shadow: rgba(0, 0, 0, 0.1)0 0 10px;
+
+
+
+
+
+            }
+
+        }
+
+        @media (max-width: 240px) {
+
+            .menu {
+
+                display: flex;
+                flex-direction: column;
+
+
+
+            }
+
+        }
+    </style>
     <!--Booostrap-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css">
     <!--font awesome-->
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
 
 </head>
@@ -30,7 +128,7 @@
             <!--seccion formulario-->
             <section class="col-sm-8">
                 <div class="formulario" id="formulario">
-                    
+
                 </div>
             </section>
             <!--seccion formulario fin-->
@@ -39,7 +137,8 @@
                 <div class="menu">
                     <div>
                         <button class="btn btn-primary" id="date"><i class="fas fa-calendar-week"></i> Date</button>
-                        <button class="btn btn-primary" id="number"><i class="fal fa-sort-numeric-up"></i> Number</button>
+                        <button class="btn btn-primary" id="number"><i class="fal fa-sort-numeric-up"></i>
+                            Number</button>
                         <button class="btn btn-primary" id="text"><i class="fas fa-text-height"></i> Text</button>
                         <button class="btn btn-primary" id="button">Boton</button>
 
@@ -47,7 +146,7 @@
                     <div>
                         <button class="btn btn-primary" id="file"><i class="fas fa-file-upload"></i> File</button>
                         <button class="btn btn-primary" id="checkbox"><i class="fas fa-box-check"></i> checkbox</button>
-                        <button class="btn btn-primary" id="select" ><i class="fas fa-mouse-pointer"></i> select</button>
+                        <button class="btn btn-primary" id="select"><i class="fas fa-mouse-pointer"></i> select</button>
                     </div>
                 </div>
             </section>
@@ -58,7 +157,113 @@
     </div>
 
     <!--js-->
-    <script src="./js/main.js"></script>
+    <script>
+        contador = 1;
+        //ejecuto la funcion automatica
+        function automatico(tipo) {
+
+            const formulario = document.querySelector("#formulario");
+
+
+            console.log(formulario);
+
+            //definimos el contenedro hijo
+            const contenido = document.createElement('section');
+            contenido.className = "contenido"
+
+
+
+
+
+
+            //creamos los inputs
+            const input = document.createElement('input');
+            const boton = document.createElement('button');
+
+
+            if (tipo == "checkbox") {
+                boton.className = "btn btn-danger ";
+                boton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+                input.type = tipo;
+                var label = document.createElement('label');
+                label.innerText = `opcion ${contador}`;
+
+                contenido.appendChild(input);
+                contenido.appendChild(label);
+                contenido.appendChild(boton);
+                formulario.appendChild(contenido);
+                contador++;
+
+            }
+
+            if (tipo == "select") {
+                boton.className = "btn btn-danger ";
+                boton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+                const select = document.createElement('select');
+                const option1 = document.createElement('option');
+                option1.innerText = "option1"
+                const option2 = document.createElement('option');
+                option2.innerText = "option2"
+                select.append(option1, option2)
+                contenido.appendChild(select);
+                contenido.appendChild(boton);
+                formulario.appendChild(contenido);
+
+            }
+
+
+
+            if (tipo == "text" || tipo == "number" || tipo == "date" || tipo == "file") {
+                input.className = 'form-control';
+                boton.className = "btn btn-danger ";
+                boton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+                input.type = tipo;
+                contenido.appendChild(input);
+                contenido.appendChild(boton);
+                formulario.appendChild(contenido);
+            }
+
+            if (tipo == "button") {
+                boton.className = "btn btn-danger ";
+                boton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+
+                const btnButton = document.createElement("input")
+                btnButton.setAttribute("type", "button")
+                btnButton.value = "soy un boton";
+                btnButton.className = "btn btn-success";
+                contenido.appendChild(btnButton);
+                contenido.appendChild(boton);
+                formulario.appendChild(contenido);
+
+            }
+
+            //agregamos alos padres
+
+
+
+
+
+
+            boton.addEventListener('click', () => {
+                formulario.removeChild(contenido);
+            })
+
+        }
+
+
+
+        var botones = document.querySelectorAll('.btn');
+        console.log(botones)
+
+        botones.forEach(element => {
+            element.addEventListener('click', () => {
+
+                automatico(element.id); //pasamos como parametro el id
+                console.log('boton ' + element.id)
+
+            })
+        });
+    </script>
 </body>
 
 </html>
